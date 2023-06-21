@@ -47,14 +47,6 @@
                left: -75px;
             }
          }
-         .btnNao:hover {
-            color: #fff;
-            background-color: red;
-         }
-         .btnNao:focus {
-            color: #fff;
-            background-color: red;
-         }
       </style>
       <!-- botoes -->
       <div class="center-div">
@@ -84,23 +76,23 @@
              <div class="modal-body">
                <img class="imagem-modal" src="https://i.pinimg.com/474x/25/9f/5a/259f5a8f83995f6f4bd37d27280196dd.jpg" alt="">
                <div>
-                  <input type="checkbox" id="blessCheckbox" name="restaurant" value="Bless" onclick="checkResponsivo(this)">
-                  <label for="blessCheckbox">Bless</label>
-                </div>
-                
-                <div>
-                  <input type="checkbox" id="americanCheckbox" name="restaurant" value="American" onclick="checkResponsivo(this)">
-                  <label for="americanCheckbox">American</label>
-                </div>
-                
-                <div>
-                  <input type="checkbox" id="fatbullCheckbox" name="restaurant" value="Fatbull" onclick="checkResponsivo(this)">
-                  <label for="fatbullCheckbox">Fatbull</label>
-                </div>                
-               <input type="time" class="form-control" id="horarioInput" onchange="horarioMudou(this)">
+                 <input type="checkbox" id="blessCheckbox" name="restaurant" value="Bless" onclick="handleCheckboxClick(this)">
+                 <label for="blessCheckbox">Bless</label>
+               </div>
+       
+               <div>
+                 <input type="checkbox" id="americanCheckbox" name="restaurant" value="American" onclick="handleCheckboxClick(this)">
+                 <label for="americanCheckbox">American</label>
+               </div>
+       
+               <div>
+                 <input type="checkbox" id="fatbullCheckbox" name="restaurant" value="Fatbull" onclick="handleCheckboxClick(this)">
+                 <label for="fatbullCheckbox">Fatbull</label>
+               </div>
+               <input type="time" class="form-control" id="horarioInput" onchange="handleHorarioChange(this)">
              </div>
              <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="enviarWhatsApp()" id="enviarBtn" disabled>foi🤩</button>
+               <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="enviarWhatsApp()" id="enviarBtn" disabled>e lá vamos nós🤩</button>
              </div>
            </div>
          </div>
@@ -111,37 +103,52 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <script>
-         function checkResponsivo(checkbox) {
-    var enviarBtn = document.getElementById("enviarBtn");
-    var checkboxes = document.querySelectorAll('input[name="restaurant"]:checked');
-    var horarioInput = document.getElementById("horarioInput");
+         function handleCheckboxClick(checkbox) {
+            var enviarBtn = document.getElementById("enviarBtn");
+            var checkboxes = document.querySelectorAll('input[name="restaurant"]:checked');
+            var horarioInput = document.getElementById("horarioInput");
 
-    upBotao(enviarBtn, checkboxes, horarioInput);
+            if (checkboxes.length > 0 || horarioInput.value !== "") {
+               enviarBtn.disabled = false;
+            } else {
+               enviarBtn.disabled = true;
+            }
+         }
+
+         function handleHorarioChange() {
+  var enviarBtn = document.getElementById("enviarBtn");
+  var checkboxes = document.querySelectorAll('input[name="restaurant"]:checked');
+  var horarioInput = document.getElementById("horarioInput");
+
+  if (checkboxes.length > 0 && horarioInput.value !== "") {
+    enviarBtn.disabled = false;
+  } else {
+    enviarBtn.disabled = true;
+  }
 }
 
-function horarioMudou(input) {
-    var enviarBtn = document.getElementById("enviarBtn");
-    var checkboxes = document.querySelectorAll('input[name="restaurant"]:checked');
-    var horarioInput = document.getElementById("horarioInput");
+// Adiciona um ouvinte de evento para a mudança no elemento de entrada de horário
+var horarioInput = document.getElementById("horarioInput");
+horarioInput.addEventListener("change", handleHorarioChange);
 
-    upBotao(enviarBtn, checkboxes, horarioInput);
-}
+// Obtém referências para todos os checkboxes com o atributo 'name' igual a "restaurant"
+var checkboxes = document.querySelectorAll('input[name="restaurant"]');
 
-function upBotao(enviarBtn, checkboxes, horarioInput) {
-    if (checkboxes.length > 0 && horarioInput.value !== "") {
-        enviarBtn.disabled = false;
-    } else {
-        enviarBtn.disabled = true;
-    }
-}
+// Adiciona um ouvinte de evento para cada checkbox
+checkboxes.forEach(function (checkbox) {
+  checkbox.addEventListener("change", handleHorarioChange);
+});
 
-function checkMudou(checkbox) {
-    var enviarBtn = document.getElementById("enviarBtn");
-    var checkboxes = document.querySelectorAll('input[name="restaurant"]:checked');
-    var horarioInput = document.getElementById("horarioInput");
-
-    upBotao(enviarBtn, checkboxes, horarioInput);
-}
+      </script>
+      <script>
+         function handleCheckboxClick(checkbox) {
+           var checkboxes = document.getElementsByName("restaurant");
+           checkboxes.forEach(function (cb) {
+             if (cb !== checkbox) {
+               cb.checked = false;
+             }
+           });
+         }
       </script>
       <script>
          function enviarWhatsApp() {
