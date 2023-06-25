@@ -161,25 +161,25 @@ checkboxes.forEach(function (checkbox) {
             var checkboxes = document.getElementsByName("restaurant");
             var restauranteSelecionado = "";
 
-for (var i = 0; i < checkboxes.length; i++) {
-   if (checkboxes[i].checked) {
-      restauranteSelecionado = checkboxes[i].value;
-      break;
-   }
-}
+            for (var i = 0; i < checkboxes.length; i++) {
+               if (checkboxes[i].checked) {
+                  restauranteSelecionado = checkboxes[i].value;
+                  break;
+               }
+            }
 
-if (mensagem.trim() !== "" && restauranteSelecionado.trim() !== "") {
-   var mensagemFormatada = encodeURIComponent(mensagem);
-   var restauranteFormatado = encodeURIComponent(restauranteSelecionado.trim());
+            if (mensagem.trim() !== "" && restauranteSelecionado.trim() !== "") {
+               var mensagemFormatada = encodeURIComponent(mensagem);
+               var restauranteFormatado = encodeURIComponent(restauranteSelecionado.trim());
 
-   if (restauranteFormatado === "Me%20surpreenda") {
-      var linkWhatsApp = "https://api.whatsapp.com/send?phone=" + numeroWhatsApp + "&text=" + restauranteFormatado + " às " + mensagemFormatada;
-   } else {
-      var linkWhatsApp = "https://api.whatsapp.com/send?phone=" + numeroWhatsApp + "&text=bora%20no%20" + restauranteFormatado + " às " + mensagemFormatada;
-   }
+               if (restauranteFormatado === "Me%20surpreenda") {
+                  var linkWhatsApp = "https://api.whatsapp.com/send?phone=" + numeroWhatsApp + "&text=" + restauranteFormatado + " às " + mensagemFormatada;
+               } else {
+                  var linkWhatsApp = "https://api.whatsapp.com/send?phone=" + numeroWhatsApp + "&text=bora%20no%20" + restauranteFormatado + " às " + mensagemFormatada;
+               }
 
-   window.open(linkWhatsApp);
-}
+               window.open(linkWhatsApp);
+            }
 
          }
          
