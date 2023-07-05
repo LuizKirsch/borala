@@ -202,16 +202,17 @@ checkboxes.forEach(function (checkbox) {
          
          
          $(document).ready(function() {
-   $(".btnNao").hover(
-      function() {
-         let posTop = Math.floor(Math.random() * (-300 - 10) + 10);
-         let posLeft = Math.floor(Math.random() * (-300 - 10) + 10);
-   
-         $(this).css({ top: posTop + "px", left: posLeft + "px" });
-      },
-      function() {}
-   );
+  $(".btnNao").hover(
+    function() {
+      let posTop = Math.floor(Math.random() * ($(window).height() - 50)); // Ajuste o valor 50 de acordo com a altura do elemento
+      let posLeft = Math.floor(Math.random() * ($(window).width() - 50)); // Ajuste o valor 50 de acordo com a largura do elemento
+
+      $(this).css({ top: posTop + "px", left: posLeft + "px" });
+    },
+    function() {}
+  );
 });
+
 
       </script>
    </body>
