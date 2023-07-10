@@ -57,13 +57,35 @@
             <button type="button" class="btn btn-primary borderNone" data-toggle="modal" data-target="#exampleModal" style="margin: 5px;">
             Sim
             </button>
-            <button type="button" class="btn botaoNao borderNone btnNao" id="btnNao" style="color: white;z-index: 1; position: relative;">
+            <!-- <button type="button" class="btn botaoNao borderNone btnNao" id="btnNao" style="color: white;z-index: 1; position: relative;">
             Não
-            </button>
+            </button> -->
+            <!-- Button trigger modal -->
+<button type="button" class="btn botaoNao borderNone btnNao" id="btnNao" style="color: white;z-index: 1; position: relative;" data-toggle="modal" data-target="#exampleModalLong">
+   Não
+ </button>
+ 
+ 
 
          </div>
          <img class="image" src="https://i.pinimg.com/originals/80/3f/82/803f82d89dee2e80845a3a817d07dd91.png" alt="">
       </div>
+      <!-- Modal -->
+ <div class="modal fade" id="exampleModalLong" tabindex="2" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Bah ratiou hein</h5>
+       </div>
+       <div class="modal-body">
+         <img src="smiley-g806390465_640.png" style="width: 330px; position: relative; top: 50%; left: 13%;"><br>
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
       <!-- modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog" role="document">
@@ -202,17 +224,16 @@ checkboxes.forEach(function (checkbox) {
          
          
          $(document).ready(function() {
-  $(".btnNao").hover(
-    function() {
-      let posTop = Math.floor(Math.random() * ($(window).height() - 50)); // Ajuste o valor 50 de acordo com a altura do elemento
-      let posLeft = Math.floor(Math.random() * ($(window).width() - 50)); // Ajuste o valor 50 de acordo com a largura do elemento
-
-      $(this).css({ top: posTop + "px", left: posLeft + "px" });
-    },
-    function() {}
-  );
+   $(".btnNao").hover(
+      function() {
+         let posTop = Math.floor(Math.random() * (-300 - 10) + 10);
+         let posLeft = Math.floor(Math.random() * (-300 - 10) + 10);
+   
+         $(this).css({ top: posTop + "px", left: posLeft + "px" });
+      },
+      function() {}
+   );
 });
-
 
       </script>
    </body>
