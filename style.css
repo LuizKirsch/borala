@@ -1,0 +1,29 @@
+.justify-center{
+    display: flex;
+    justify-content: center;
+}
+.margin-container{
+    margin-top: 30vh;
+}
+.row-none-display{
+    display: contents;
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+.row-conteudo{
+    margin-top: 25px;
+}
+.img-local{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.button-local{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.flex{
+    display: flex;
+}
