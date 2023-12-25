@@ -125,14 +125,21 @@ function enviarWhatsApp() {
                 mensagemFormatada;
         }
 
-        window.open(linkWhatsApp);
+        setTimeout(function() {
+            window.open(linkWhatsApp);
+            // Executa o evento após 1 segundo
+            setTimeout(function() {
+                const defaultModal = document.querySelector('[data-modal-hide="default-modal"]');
+                if (defaultModal) {
+                    defaultModal.click(); // Dispara o evento de modal
+                }
+            }, 1000);
+        }, 1000);
         document.getElementById("horarioInput").value = "";
-        // document.getElementById("texterea").value = "";
         checkboxes.forEach((checkbox) => {
             checkbox.checked = false;
         });
         checkConditions();
-
     }
 }
 
