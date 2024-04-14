@@ -1,17 +1,26 @@
-$(document).ready(function () {
-    function changeButtonPosition() {
-        let posTop = Math.floor(Math.random() * (-200 - 20) + 10);
-        let posLeft = Math.floor(Math.random() * (-200 - 20) + 10);
+document.addEventListener("DOMContentLoaded", function() {
+    const buttonNao = document.querySelector(".btn-nao");
 
-        $(this).css({ top: posTop + "px", left: posLeft + "px" });
+    function moveButton() {
+        const maxWidth = window.innerWidth - buttonNao.offsetWidth;
+        const maxHeight = window.innerHeight - buttonNao.offsetHeight;
+
+        const randomX = Math.floor(Math.random() * maxWidth);
+        const randomY = Math.floor(Math.random() * maxHeight);
+
+        buttonNao.style.position = "absolute";
+        buttonNao.style.left = `${randomX}px`;
+        buttonNao.style.top = `${randomY}px`;
     }
 
-    $('.btn-nao').hover(
-        changeButtonPosition,
-        function () {}
-    );
-
-    $('.btn-nao').on('mousedown touchstart', changeButtonPosition);
+    // Adiciona ouvinte de evento para mouseover
+    buttonNao.addEventListener("mouseover", moveButton);
+    
+    // Adiciona ouvinte de evento para click
+    buttonNao.addEventListener("click", moveButton);
+    
+    // Adiciona ouvinte de evento para toque
+    buttonNao.addEventListener("touchstart", moveButton);
 });
 
 function handleCheckboxClick(checkbox) {
@@ -127,11 +136,11 @@ function enviarWhatsApp() {
 
         setTimeout(function() {
             window.open(linkWhatsApp);
-            // Executa o evento após 1 segundo
+            // executa o evento após 1 segundo
             setTimeout(function() {
                 const defaultModal = document.querySelector('[data-modal-hide="default-modal"]');
                 if (defaultModal) {
-                    defaultModal.click(); // Dispara o evento de modal
+                    defaultModal.click(); // dispara o evento de modal
                 }
             }, 1000);
         }, 1000);
