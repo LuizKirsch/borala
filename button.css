@@ -99,7 +99,7 @@
   .btn-nao{
     background-color: #e60505;
     transition: all 0.8s;
-    z-index: 49;
+    z-index: 39;
   }
 
   .btn-nao:hover::after,
