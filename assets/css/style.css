@@ -6,6 +6,9 @@ body {
     height: var(--tela-toda);
     font-family: 'Lilita One', sans-serif;
 }
+a{
+    color: black;
+}
 .body {
     height: var(--tela-toda);
     display: flex;
@@ -29,9 +32,19 @@ body {
 }
 @media (max-width: 770px), (max-height: 510px) {
     .img-modal > img {
-        width: 100px;
+        width: 300px;
     }
 }
 .fs-10{
     font-size: 10px;
+}
+.btn-eu-vou{
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    color: var(--bs-accordion-btn-color);
+    text-align: left;
+    width: 100%;
+}
+.accordion-collapse{
+    transition: 2s!important;
 }
